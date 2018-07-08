@@ -1,8 +1,8 @@
 ---
 applications:
 - name: banking-client
-  path: /home/travis/build/rfernandezv/banking-client/dist
+  path: /home/travis/build/jhonatantirado/banking-client/dist
   buildpack: staticfile_buildpack
-  memory: 768M
+  memory: 512M
   instances: 1
   random-route: true
