@@ -4,10 +4,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http';
 import {
   MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatPaginatorModule, MatSortModule,
-  MatProgressSpinnerModule, 
+  MatProgressSpinnerModule, MatDatepickerModule, MatNativeDateModule,
   MatCheckboxModule, MatTableModule, MatToolbarModule, MAT_DIALOG_DATA, MatDialogRef
 } from '@angular/material';
 import { ToastModule } from 'ng2-toastr';
+import { BlockUIModule } from 'ng-block-ui';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,9 +21,11 @@ import { CurrentOptionComponent } from './current-option/current-option.componen
 import { AddDialogComponent} from './customer/add/add.dialog.component';
 import { EditDialogComponent} from './customer/edit/edit.dialog.component';
 import { DeleteDialogComponent} from './customer/delete/delete.dialog.component';
+import { ActivateDialogComponent} from './customer/activate/activate.dialog.component';
 import { AddDialogBankComponent} from './bank-account/add/add.dialog.component';
 import { EditDialogBankComponent} from './bank-account/edit/edit.dialog.component';
 import { DeleteDialogBankComponent} from './bank-account/delete/delete.dialog.component';
+import { ActivateDialogBankComponent} from './bank-account/activate/activate.dialog.component';
 import { TranferService} from './services/transfer.service';
 import { CustomerService} from './services/customer.service';
 import { BankAccountService} from './services/bank-account.service';
@@ -43,17 +46,21 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AddDialogComponent,
     EditDialogComponent,
     DeleteDialogComponent,
+    ActivateDialogComponent,
     AddDialogBankComponent,
     EditDialogBankComponent,
-    DeleteDialogBankComponent
+    DeleteDialogBankComponent,
+    ActivateDialogBankComponent
   ],
   entryComponents: [
     AddDialogComponent,
     EditDialogComponent,
     DeleteDialogComponent,
+    ActivateDialogComponent,
     AddDialogBankComponent,
     EditDialogBankComponent,
-    DeleteDialogBankComponent
+    DeleteDialogBankComponent,
+    ActivateDialogBankComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +72,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     ToastModule.forRoot(),
+    BlockUIModule.forRoot(
+      {
+        message: 'Please wait...'
+      }
+    ),
 
     MatDialogModule,
     MatButtonModule,
@@ -75,7 +87,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatToolbarModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
+  exports: [
+    MatDatepickerModule
   ],
   providers: [
     AuthService, AuthGuard, TranferService, CustomerService, BankAccountService, MessageAlertHandleService, Globals,
