@@ -12,16 +12,16 @@ deploy:
    provider: cloudfoundry
    username: jhonatantiradotiradodeep@gmail.com
    password: 
-    secure: "xEKE3I1u16v3kor66opwQ+rfSxcFdwBblEG1EiweF0K23ufYRR/IWQPHkrfX/tFEUxvIJNXSF3jJbVq38Izv41XSkGjJUKEJJbloyPuPeU9CY
-3fWEi3n20zkCH84bvSLpOMh/puvIzT/MI6lg2rYwlx4/qTEwKwdZvrIyoQxV1I98hxhdlesrvOTFkrTvgSI4UNTMPZjVcJBOVdyF8b79DWIEiwMIAe2LDTy0
-vhAo4Tz7/YUDK0VOrkxnXO0hK+cd4b08PuCqjB6A9kae4J5JbvlglErXMkQM4ZkM23vgFRieQ2GY5ihaov3UoHDJ41oWdkWfrHmb5VdtQscnZc3bxGoM7V7C
-aA7PGaG/7kBeCRME7EGvk9BbKvw524agsLSJqY6SPGbpRH6vigptUm0XAMbSn2QY9FM15UrM9z007NCYaJoh3MG+1DYvdT/5bj5A6aDHRqm8B615hpkYrz25
-9Nj3B8EnyLTODhcTe/8+GIVnskRmhcrw/n1hymQee0KduO2pnlewj4iWhDX+XmuFlCwnmXK2orVvar1H50CAKlsA6tYxkzviUqQZhYzUR5mc5zCjXPE540BF
-qS4wnJB6oydLauO0aoi9grFAtMxT/0DZfZkS02p1c8dkfb68/3mLo+pakt1mAf2y6mjLcpCtEUzEpsuI0/WF1q98cchs+0="
+    secure: "u/VM51FOxWytZot3jiOR6ffXv5e9SminxrqTHa4XR0W4UmF+mb70MEF2Q68hfmjkqeVO4fPkh2BcTV9F2pti8m7rOAKCVpAIdLk9TwaeELTh/
+3nqWjLtWIgfsTsM9tI+2s7+jGOtnj1GPiXzi1b4y+V81fZefA7jD9Pu7J45d6tY++LAmyq7MGVJwvVcLYmb+pUG9F/tLKOMTBE5CAheJDz1oRuOyWtHeSeW1
+DjJ0VfDdfYXdNgLfpO870vA2aUlwfgXwdZT+9fYp6tJ820gwKfa2PdWyWLPzW1LpZd2z+BPppe2O1r2IwvvGK76TeSwxs7jF08vAqgAZg/CUEObJQ250uPLn
+iEXw0VeHJszJmZdPchKPEUa0Z8SDvqeTFl8mKSI6bXm2mxW2i0gsN8ZnVlj5Qyr+KR0v41Kvplb1G/PMsVggjJz2AZYWnL7faElb3HSjGf1dFujkmtugCENE
+LwkrgJP/hhi9Z9EfAL27zoccNl5mRW72j8dkW9yH90cHE36lgDYm8XJ2ZCG1ORtVBb6S7Dk0QWHrPz0H3KeOvfQgi794WWwJY1QmFMPBXadZt8XcWMaiA3sV
+HP3X+08CrCJfMg1PIo8GQvdYUENi66KGCU0icBuoHRDS+T8cN6FOfP7Eil/j7C0/1/3g7SRvpwIOhavq8RZ7AWJFhdelzk="
    api: https://api.run.pivotal.io
    organization: kipubit
    space: development
 notifications:
-  email:
-    on_failure: change
-    on_success: change
+   email:
+     on_failure: change
+     on_success: change
