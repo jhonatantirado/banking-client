@@ -19,17 +19,10 @@ export class BankAccountService {
 
   dataChange: BehaviorSubject<BankAccount[]> = new BehaviorSubject<BankAccount[]>([]);
   dialogData: BankAccount;
+  totalSize : BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   constructor (private httpClient: HttpClient) {}
-
-  get data(): BankAccount[] {
-    return this.dataChange.value;
-  }
-
-  getDialogData() {
-    return this.dialogData;
-  }
-
+  
   getAllBankAccount(): void {
     this.httpClient.get<ResponseAllBankAccountDto>(this.API_URL+'/bankAccount?offset=1&limit=20').subscribe(data => {
         this.dataChange.next(data.content);
@@ -45,7 +38,7 @@ export class BankAccountService {
               this.dataChange.next(data);
             },
             (error: HttpErrorResponse) => {
-               // console.log (error.name + ' ' + error.message);
+                console.log (error.name + ' ' + error.message);
             });
   }
 
@@ -58,8 +51,13 @@ export class BankAccountService {
             .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
-  addBankAccount (requestBankAccountDto: RequestBankAccountDto): Observable<ResponseApi> {
+  getCustomerByAccountNumber (accountNumber : string): Observable<BankAccount> {
+    return this.httpClient.get<BankAccount>(this.API_URL+'/findByAccountNumber?accountNumber='+accountNumber)
+            .map(data => data)
+            .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
 
+  addBankAccount (requestBankAccountDto: RequestBankAccountDto): Observable<ResponseApi> {
     return this.httpClient
             .post(this.API_URL+'/bankAccount', requestBankAccountDto,  HttpOptionsConst)
             .map(
@@ -85,4 +83,16 @@ export class BankAccountService {
             )
           .catch((error: any) => Observable.throw(error || 'Server error'));
   }
+
+  get data(): BankAccount[] {
+    return this.dataChange.value;
+  }
+
+  getDialogData() {
+    return this.dialogData;
+  }
+
+  getTotalSize() : number{
+    return this.totalSize.value;
+}
 }

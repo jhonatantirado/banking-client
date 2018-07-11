@@ -19,26 +19,16 @@ export class CustomerService {
 
   dataChange: BehaviorSubject<Customer[]> = new BehaviorSubject<Customer[]>([]);
   dialogData: Customer; 
+  totalSize : BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   constructor (private httpClient: HttpClient) {}
+  
 
-  get data(): Customer[] {
-    return this.dataChange.value;
+  getCustomerByNumDoc (numDoc : string): Observable<Customer> {
+      return this.httpClient.get<Customer>(this.API_URL+'/findByDocumentNumber?documentNumber='+numDoc)
+              .map(data => data)
+              .catch((error: any) => Observable.throw(error || 'Server error'));
   }
-
-  getDialogData() {
-    return this.dialogData;
-  }
-
-  getAllCustomers(): void {
-    this.httpClient.get<ResponseAllCustomersDto>(this.API_URL+'/customer?offset=1&limit=20').subscribe(data => {
-        this.dataChange.next(data.content);
-      },
-      (error: HttpErrorResponse) => {
-          console.log (error.name + ' ' + error.message);
-       });
-  }
-
 
   addCustomer (requestCustomerDto: RequestCustomerDto): Observable<ResponseApi> {
     return this.httpClient
@@ -66,4 +56,28 @@ export class CustomerService {
             )
           .catch((error: any) => Observable.throw(error || 'Server error'));
   }
+
+  getAllCustomersByLimit(offset : number, limit : number): void {
+    this.httpClient.get<ResponseAllCustomersDto>(this.API_URL+'/customer?offset='+offset+'&limit='+limit).subscribe(data => {
+        this.totalSize.next(data.totalRecords);
+        this.dataChange.next(data.content);
+      },
+      (error: HttpErrorResponse) => {
+          console.log (error.name + ' ' + error.message);
+       });
+  }
+  
+  get data(): Customer[] {
+    return this.dataChange.value;
+  }
+
+  getDialogData() {
+    return this.dialogData;
+  }
+
+  getTotalSize() : number{
+      return this.totalSize.value;
+  }
+
+  
 }
